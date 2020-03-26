@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="11.947348">
+    <testcase classname="Search Amazon" name="Search" time="11.947348">
+        <system-out>
+            <![CDATA[Given I load the website....................................................passed
+And I login with email and password.........................................passed
+When I search for "aspirador de coche"......................................passed
+And I add item from brand "AUELEK"..........................................passed
+Then I should see the item in my cart.......................................passed
+]]>
+        </system-out>
+    </testcase>
+</testsuite>
