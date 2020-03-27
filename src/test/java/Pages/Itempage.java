@@ -16,22 +16,21 @@ public class Itempage {
     @FindBy(id = "nav-cart-count")
     private WebElement cartCountNumber;
 
-//    private WebDriverWait wait;
+    private WebDriverWait wait;
 
 
     public Itempage(WebDriver driver) {
-
-//        wait = new WebDriverWait(driver, 15, 50);
+        wait = new WebDriverWait(driver, 15, 50);
         PageFactory.initElements(driver, this);
     }
 
     public void clickCart() {
+        wait.until(ExpectedConditions.visibilityOf(cartCountNumber));
         cartCountNumber.click();
     }
 
     public void clickAddToCart() {
         String cartItemsBefore = cartCountNumber.getText();
-//        wait.until(ExpectedConditions.elementToBeClickable(addCartButton));
         addCartButton.click();
         String cartItemsAfter = cartCountNumber.getText();
 
