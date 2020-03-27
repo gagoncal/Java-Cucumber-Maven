@@ -4,11 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Itempage {
+public class Itempage extends Basepage {
 
     @FindBy(id = "add-to-cart-button")
     private WebElement addCartButton;
@@ -16,23 +13,19 @@ public class Itempage {
     @FindBy(id = "nav-cart-count")
     private WebElement cartCountNumber;
 
-    private WebDriverWait wait;
-
-
     public Itempage(WebDriver driver) {
-        wait = new WebDriverWait(driver, 15, 50);
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
     public void clickCart() {
-        wait.until(ExpectedConditions.visibilityOf(cartCountNumber));
-        cartCountNumber.click();
+        click(cartCountNumber);
     }
 
     public void clickAddToCart() {
-        String cartItemsBefore = cartCountNumber.getText();
-        addCartButton.click();
-        String cartItemsAfter = cartCountNumber.getText();
+        String cartItemsBefore = readText(cartCountNumber);
+        click(addCartButton);
+        String cartItemsAfter = readText(cartCountNumber);
 
         assert Integer.parseInt(cartItemsAfter) == Integer.parseInt(cartItemsBefore) + 1 :
                 "After clicking add cart button item count was not incremented. ";
