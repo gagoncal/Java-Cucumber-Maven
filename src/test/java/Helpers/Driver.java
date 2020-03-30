@@ -15,7 +15,6 @@ public class Driver {
     public static WebDriver driver;
 
     public static WebDriver getDriver(){
-//        System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
         String browser = System.getProperty("browser");
         if (browser == null) {
             browser = "chrome";
@@ -44,5 +43,12 @@ public class Driver {
         FileInputStream inStream = new FileInputStream("src/test/java/global.properties");
         properties.load(inStream);
         return properties;
+    }
+
+    public static String getReportConfigPath() throws IOException {
+        Properties properties = loadProperties();
+        String reportConfigPath = properties.getProperty("reportConfigPath");
+        if(reportConfigPath!= null) return reportConfigPath;
+        else throw new RuntimeException("Report Config Path not specified in the global.properties file for the Key:reportConfigPath");
     }
 }

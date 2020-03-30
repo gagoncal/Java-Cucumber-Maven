@@ -16,3 +16,8 @@ Override option - Browser type is passed using system parameter:
 default browser is chrome , when no parameter is passed. Firefox is also supported. 
 Other browsers can easily be added to the framework , using Driver class:
 `src/test/java/Helpers/Driver.java`
+
+# Reporting
+
+Extent reports were integrated in this framework, reports are automatically generated at the end of test execution,
+location : `test-output`

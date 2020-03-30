@@ -1,7 +1,7 @@
 package Steps;
 
 import Helpers.Driver;
-import cucumber.api.java.After;
+import io.cucumber.java.After;
 
 public class Hooks extends Driver{
 
